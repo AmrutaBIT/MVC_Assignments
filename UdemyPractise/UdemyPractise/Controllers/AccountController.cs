@@ -21,5 +21,16 @@ namespace UdemyPractise.Controllers
         {
             return Content("Invalid Login Try Again");
         }
+
+        public ActionResult StudentDetails()
+        {
+            ViewBag.StudentId = 101;
+            ViewBag.StudentName = "Scott";
+            ViewBag.StudentCourse = "Science";
+            ViewBag.StudentMark=63;
+            ViewBag.NoOfSem = 8;
+            ViewBag.Subjects = new List<string>() { "Physics", "Maths", "Chemistry" };
+            return View();
+        }
     }
 }
