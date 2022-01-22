@@ -1,9 +1,10 @@
-﻿
+﻿@model List<Day5ModelsDemo.Models.Product>
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Product</h2>
+<a href="@Url.Action("Create","Products")">Create Product</a>
 <table class="table">
     <thead>
         <tr>
@@ -13,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-            @foreach(var item in ViewBag.Product)
+            @foreach(var item in Model)
              {
                 <tr>
                     <td>@item.ProductId</td>

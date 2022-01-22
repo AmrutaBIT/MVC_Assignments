@@ -1,3 +1,4 @@
+using Day5ModelsDemo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Day5ModelsDemo
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            ModelBinders.Binders.Add(typeof(Student), new CustomBinder());
         }
     }
 }

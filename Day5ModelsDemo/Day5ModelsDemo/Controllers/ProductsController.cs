@@ -17,8 +17,8 @@ namespace Day5ModelsDemo.Controllers
                 new Product{ProductId=2,ProductName="Cars",ProductRate=90000},
                 new Product{ProductId=3,ProductName="Bikes",ProductRate=70000}
             };
-            ViewBag.Product = product;
-            return View();
+          
+            return View(product);
         }
         public ActionResult Details(int id)
         {
@@ -36,9 +36,18 @@ namespace Day5ModelsDemo.Controllers
                     matchingProd = item;
                 }
             }
-            ViewBag.MatchingProduct=matchingProd;
-            return View();
+            return View("Details", matchingProd);
 
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create([Bind(Include ="ProductId,ProductName")] Product p)
+        {
+            return View();
+        }
+
     }
 }
