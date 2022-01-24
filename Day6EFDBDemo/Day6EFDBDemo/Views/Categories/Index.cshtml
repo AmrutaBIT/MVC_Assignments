@@ -1,0 +1,21 @@
+﻿@model List<Day6EFDBDemo.Models.Category>
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Categories</h2>
+<table class="table">
+    <tr>
+        <th>Category Id</th>
+        <th>Category Name</th>
+    </tr>
+    @foreach(var item in Model)
+     {
+        <tr>
+            <td>@item.categoryId</td>
+            <td>@item.categoryName</td>
+        </tr>
+
+     }
+</table>
