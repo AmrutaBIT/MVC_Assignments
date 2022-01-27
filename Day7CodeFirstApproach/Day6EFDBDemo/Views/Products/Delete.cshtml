@@ -1,0 +1,23 @@
+﻿@model Day6EFDBDemo.Models.Product
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Delete</h2>
+<form action="/Products/Delete/@Model.productId" method="post" >
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="productName">Product Name</label>
+                <input type="hidden" name="productId" value="@Model.productId" />
+                @Model.productName
+            </div>
+            <div class="form-group col-md-6">
+                <label for="price">Price</label>
+                @Model.price
+            </div>
+        </div>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="/Products/Index" class="btn btn-primary">Cancel</a>
+</form>

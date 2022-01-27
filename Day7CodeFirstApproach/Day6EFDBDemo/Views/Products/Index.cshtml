@@ -1,0 +1,67 @@
+﻿@model List<Day6EFDBDemo.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Products</h2>
+
+<form class="form-inline" action="/Products/Index">
+    <label for="search" class="mr-1">Search</label>
+    <input type="search" class="form-control-mr-1" id="search" name="search" placeholder="Search" value="@ViewBag.search" />
+    <button type="submit" class="btn btn-primary">GO</button>
+</form>
+<a href="/Products/Create/" class="btn btn-outline-primary">Create Product</a>
+
+<table class="table">
+    <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Date Of Purchase</th>
+        <th>Availability Status</th>
+        <th>Category Name</th>
+        <th>Brand Name</th>
+        <th>Active</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.productId</td>
+            <td>@item.productName</td>
+            <td>
+                @if (item.price.HasValue)
+                {
+                <span>@item.price.Value.ToString("C")</span>
+                }
+            </td>
+            <td>
+                @if(item.dateOfPurchase.HasValue) 
+                 {
+                <span>@item.dateOfPurchase.Value.ToString("yyyy/MM/dd")</span>
+                 }
+            </td>
+            <td>@item.availabilityStatus</td>
+            <td>
+                @if(item.Category !=null)
+                {
+                    <span>@item.Category.categoryName</span>
+                }
+            </td>
+            <td>
+                @if(item.Brand !=null)
+                {
+                <span>@item.Brand.brandName</span>
+                }
+            </td>
+            <td>@item.active</td>
+            <td>
+                <a href="/Products/Details/@item.productId" class="btn btn-outline-primary">Details</a>
+                <a href="/Products/Update/@item.productId" class="btn btn-outline-primary">Update</a>
+                <a href="/Products/Delete/@item.productId" class="btn btn-outline-primary">Delete</a>
+            </td>
+        </tr>
+
+    }
+</table>
+
