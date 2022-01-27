@@ -22,6 +22,7 @@ namespace Day6EFDBDemo.Models
         public Nullable<long> categoryId { get; set; }
         public Nullable<long> brandId { get; set; }
         public Nullable<bool> active { get; set; }
+        public string Photo { get; set; }
     
         public virtual Brand Brand { get; set; }
         public virtual Category Category { get; set; }

@@ -26,6 +26,7 @@
     <Property Name="categoryId" Type="bigint" />
     <Property Name="brandId" Type="bigint" />
     <Property Name="active" Type="bit" />
+    <Property Name="Photo" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="FK__Products__brandI__29572725">
     <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
