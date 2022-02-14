@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "cff46f5f-1c4f-4800-9458-6a5cefa8169c": {
+      "ProjectGuid": "cff46f5f-1c4f-4800-9458-6a5cefa8169c",
+      "DisplayName": "BankManagement",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

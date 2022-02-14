@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BankManagementDBModelStoreContainer" CdmEntityContainer="BankManagementDBEntities1">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="BankManagementDBModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+          <ScalarProperty Name="CustomerNo" ColumnName="CustomerNo" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PolicyNo" ColumnName="PolicyNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PolicyDetails">
+      <EntityTypeMapping TypeName="BankManagementDBModel.PolicyDetail">
+        <MappingFragment StoreEntitySet="PolicyDetails">
+          <ScalarProperty Name="PolicyNo" ColumnName="PolicyNo" />
+          <ScalarProperty Name="PolicyName" ColumnName="PolicyName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

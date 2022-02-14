@@ -1,0 +1,92 @@
+﻿@model List<BankManagement.Models.PolicyDetail>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2 align="center">Policy Details</h2>
+
+<a href="/Policy/Create/" class="btn btn-dark">Create Policy</a>
+<hr />
+
+<table class="table">
+    <tr>
+        <th width="20%">Policy No</th>
+        <th width="20%">Policy Name</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr id="row_@item.PolicyNo">
+            <td>@item.PolicyNo</td>
+            <td>@item.PolicyName</td>
+            <td> 
+                <a class="btn btn-danger" href="#" onclick="ConfirmDelete(@item.PolicyNo)">Delete</a>
+            </td>
+        </tr>
+
+    }
+</table>
+
+<input type="hidden" id="hiddenPolicyNo" />
+
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Delete Policy</h3>                
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure you want to delete Policy Detail?</h4>
+
+                <div style="text-align:center;display:none" id="loaderDiv">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" onclick="cancel()" data-dismiss="modal">Cancel</a>
+                <a href="#" class="btn btn-success" onclick="Delete()">Confirm</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+    var ConfirmDelete = function (PolicyNo) {
+
+        $("#hiddenPolicyNo").val(PolicyNo);
+        $("#myModal").modal('show');
+
+    }
+
+    var Delete = function () {
+
+        $("#loaderDiv").show();
+
+        var PolicyNo = $("#hiddenPolicyNo").val();
+
+        $.ajax({
+
+            type: "POST",
+            url: "/Policy/Delete",
+            data: { id: PolicyNo },
+            success: function (result) {
+                $("#loaderDiv").hide();
+                $("#myModal").modal("hide");
+                $("#row_" + PolicyNo).remove();
+
+            }
+
+        })
+
+    }
+
+    var cancel = function () {
+        $("#myModal").modal("hide");
+    }
+
+</script>

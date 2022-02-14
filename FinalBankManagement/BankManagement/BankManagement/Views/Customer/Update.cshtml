@@ -1,0 +1,54 @@
+﻿@model BankManagement.Models.Customer
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<h2>Update</h2>
+
+
+@using (Html.BeginForm("Update", "Customer", FormMethod.Post))
+{
+    
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.CustomerNo)
+        @Html.HiddenFor(temp => temp.CustomerNo, Model.CustomerNo)
+        @Html.TextBoxFor(temp => temp.CustomerName, new { placeholder = "Customer Name", @class = "form-control" })
+    </div>
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.PhoneNo)
+        @Html.TextBoxFor(temp => temp.PhoneNo, new { placeholder = "Phone Number", @class = "form-control" })
+    </div>
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.DateOfBirth)
+        @Html.TextBoxFor(temp => temp.DateOfBirth, new { placeholder = "Date Of Birth", @class = "form-control" })
+    </div>
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.Address)
+        @Html.TextBoxFor(temp => temp.Address, new { placeholder = "Address", @class = "form-control" })
+    </div>
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.Email)
+        @Html.TextBoxFor(temp => temp.Email, new { placeholder = "Email", @class = "form-control" })
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            @Html.LabelFor(temp => temp.PolicyDetail)
+            @Html.DropDownListFor(temp => temp.PolicyNo, new SelectList(@ViewBag.PolicyDetails, "PolicyNo", "PolicyName"), "Please Select", new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Image">Image</label>
+        <img src="@Url.Content(Model.Photo)" width="80" height="80" />
+        <input type="file" class="form-control-file" id="file" name="Photo" />
+    </div>
+
+
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a class="btn btn-danger" href="/Customer/index">Cancel</a>
+
+
+}
+

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BankManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerNo" />
+    </Key>
+    <Property Name="CustomerNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PolicyNo" Type="Int32" />
+    <NavigationProperty Name="PolicyDetail" Relationship="Self.FK__Customer__Policy__267ABA7A" FromRole="Customer" ToRole="PolicyDetails" />
+    <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PolicyDetail">
+    <Key>
+      <PropertyRef Name="PolicyNo" />
+    </Key>
+    <Property Name="PolicyNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PolicyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__Policy__267ABA7A" FromRole="PolicyDetails" ToRole="Customer" />
+  </EntityType>
+  <Association Name="FK__Customer__Policy__267ABA7A">
+    <End Role="PolicyDetails" Type="Self.PolicyDetail" Multiplicity="0..1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PolicyDetails">
+        <PropertyRef Name="PolicyNo" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="PolicyNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BankManagementDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="PolicyDetails" EntityType="Self.PolicyDetail" />
+    <AssociationSet Name="FK__Customer__Policy__267ABA7A" Association="Self.FK__Customer__Policy__267ABA7A">
+      <End Role="PolicyDetails" EntitySet="PolicyDetails" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

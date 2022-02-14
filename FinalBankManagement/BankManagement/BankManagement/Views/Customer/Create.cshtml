@@ -1,0 +1,58 @@
+﻿@model BankManagement.Models.Customer
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2 align="center">Create Customer</h2>
+
+@using (Html.BeginForm("Create", "Customer", FormMethod.Post, new {enctype="multipart/form-data"}))
+{
+    @*<div class="form-row">
+        @Html.LabelFor(temp => temp.CustomerNo)
+        @Html.TextBoxFor(temp => temp.CustomerNo, new { placeholder = "Customer No", @class = "form-control" })
+
+    </div>*@
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.CustomerName)
+        @Html.TextBoxFor(temp => temp.CustomerName, new { placeholder = "Customer Name", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.CustomerName)
+    </div>
+
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.PhoneNo)
+        @Html.TextBoxFor(temp => temp.PhoneNo, new { placeholder = "PhoneNo", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.PhoneNo)
+    </div>
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.DateOfBirth)
+        @Html.TextBoxFor(temp => temp.DateOfBirth, new { placeholder = "Date Of Birth", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.DateOfBirth)
+    </div>
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.Address)
+        @Html.TextBoxFor(temp => temp.Address, new { placeholder = "Address", @class = "form-control" })
+        
+    </div>
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.Email)
+        @Html.TextBoxFor(temp => temp.Email, new { placeholder = "Email", @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.Email)
+    </div>
+    <div class="form-row">
+        @Html.LabelFor(temp => temp.PolicyDetail)
+        @Html.DropDownListFor(temp => temp.PolicyNo, new SelectList(@ViewBag.PolicyDetails, "PolicyNo", "PolicyName"), "Please Select", new { @class = "form-control" })
+        @Html.ValidationMessageFor(temp => temp.PolicyDetail)
+        
+    </div>
+    <div class="form-group">
+        <label for="image">Image</label>
+        <input type="file" class="fom-control-file" id="Image" name="Photo" />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-dark">Create</button>
+    <a class="btn btn-dark" href="/Products/Index">Cancel</a>
+
+}
+
+

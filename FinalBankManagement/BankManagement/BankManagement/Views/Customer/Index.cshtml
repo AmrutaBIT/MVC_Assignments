@@ -1,0 +1,322 @@
+﻿@model List<BankManagement.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<br />
+<a href="/Customer/Create/" class="btn btn-dark">Create Customer</a>
+<hr />
+
+
+@*Search*@
+<form action="/Customer/Index">
+    <div class="row">
+        <div class="form-group col-md-3">
+            <input type="text" name="CustomerName" placeholder="CustomerName" class="form-control" value="@ViewBag.CustomerName" />
+        </div>
+        <div class="form-group col-md-3">
+            <input type="text" name="PhoneNo" placeholder="PhoneNo" class="form-control" value="@ViewBag.PhoneNo" />
+        </div>
+        <div class="form-group col-md-3">
+            <input type="text" name="PolicyName" placeholder="PolicyName" class="form-control" value="@ViewBag.PolicyName" />
+        </div>
+        <div class="form-group col-md-3">
+            <button type="submit" class="btn btn-dark">
+                Search
+            </button>
+        </div>
+    </div>
+</form>
+
+
+<br />
+<table class="table" width="80%">
+    <tr class="table-secondary">
+        <th style="width:10%" color="blue">Photo</th>
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/customer/index?SortColumn=CustomerNo&IconClass=fa-sort-asc&PageNo=1" style="text-decoration: none; color: inherit; align-content:center">Customer No</a>
+                if (ViewBag.SortColumn == "CustomerNo")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+                }
+            }
+            else
+            {
+                <a href="/customer/index?SortColumn=CustomerNo&IconClass=fa-sort-desc&PageNo=1" style="text-decoration: none; color: inherit">Customer No</a>
+                if (ViewBag.SortColumn == "CustomerNo")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+                }
+            }
+        </th>
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/customer/index?SortColumn=CustomerName&IconClass=fa-sort-asc&PageNo=1" style="text-decoration: none; color: inherit">Customer Name</a>
+                if (ViewBag.SortColumn == "CustomerName")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+                }
+            }
+            else
+            {
+                <a href="/customer/index?SortColumn=CustomerName&IconClass=fa-sort-desc&PageNo=1" style="text-decoration: none; color: inherit">Customer Name</a>
+                if (ViewBag.SortColumn == "CustomerName")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+                }
+            }
+        </th>
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/customer/index?SortColumn=PhoneNo&IconClass=fa-sort-asc&PageNo=1" style="text-decoration: none; color: inherit">Phone No</a>
+                if (ViewBag.SortColumn == "PhoneNo")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+                }
+            }
+            else
+            {
+                <a href="/customer/index?SortColumn=PhoneNo&IconClass=fa-sort-desc&PageNo=1" style="text-decoration: none; color: inherit">Phone No</a>
+                if (ViewBag.SortColumn == "PhoneNo")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+                }
+            }
+        </th>
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/customer/index?SortColumn=DateOfBirth&IconClass=fa-sort-asc&PageNo=1" style="text-decoration: none; color: inherit">Date Of Birth</a>
+                if (ViewBag.SortColumn == "DateOfBirth")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+                }
+            }
+            else
+            {
+                <a href="/customer/index?SortColumn=DateOfBirth&IconClass=fa-sort-desc&PageNo=1" style="text-decoration: none; color: inherit">Date Of Birth</a>
+                if (ViewBag.SortColumn == "DateOfBirth")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+                }
+            }
+        </th>
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/customer/index?SortColumn=Address&IconClass=fa-sort-asc&PageNo=1" style="text-decoration: none; color: inherit">Address</a>
+                if (ViewBag.SortColumn == "Address")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+                }
+            }
+            else
+            {
+                <a href="/customer/index?SortColumn=Address&IconClass=fa-sort-desc&PageNo=1" style="text-decoration: none; color: inherit">Address</a>
+                if (ViewBag.SortColumn == "Address")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+                }
+            }
+        </th>
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/customer/index?SortColumn=Email&IconClass=fa-sort-asc&PageNo=1" style="text-decoration: none; color: inherit">Email</a>
+                if (ViewBag.SortColumn == "Email")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+                }
+            }
+            else
+            {
+                <a href="/customer/index?SortColumn=Email&IconClass=fa-sort-desc&PageNo=1" style="text-decoration: none; color: inherit">Email</a>
+                if (ViewBag.SortColumn == "Email")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+                }
+            }
+        </th>
+        <th style="width:10%">
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/customer/index?SortColumn==PolicyNo&IconClass=fa-sort-asc&PageNo=1" style="text-decoration: none; color: inherit">Policy No</a>
+                if (ViewBag.SortColumn == "PolicyNo")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+                }
+            }
+            else
+            {
+                <a href="/customer/index?SortColumn=PolicyNo&IconClass=fa-sort-desc&PageNo=1" style="text-decoration: none; color: inherit">Policy No</a>
+                if (ViewBag.SortColumn == "PolicyNo")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+
+
+                }
+            }
+        </th>
+        <th style="width:30%"></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr id="row_@item.CustomerNo" style="background-color:black; color:white">
+            <td><img src="data:image;base64,@item.Photo" width="100px" /></td>
+            <td>@item.CustomerNo </td>
+            <td>@item.CustomerName</td>
+            <td>@item.PhoneNo</td>
+            <td>@item.DateOfBirth</td>
+            <td>@item.Address</td>
+            <td>@item.Email</td>
+            <td>@item.PolicyDetail.PolicyName</td>
+
+            <td>
+                <a href="/Customer/Details/@item.CustomerNo" class="btn btn-outline-light">Details</a>
+                <a href="/Customer/Update/@item.CustomerNo" class="btn btn-outline-light">Update</a>
+                <a class="btn btn-danger" href="#" onclick="ConfirmDelete(@item.CustomerNo)">Delete</a>
+
+
+            </td>
+        </tr>
+
+    }
+
+
+    <tr>
+        <td colspan="9">
+            @{
+                int PrevPageNo = ViewBag.PageNo - 1;
+                if (PrevPageNo <= 0)
+                {
+                    PrevPageNo = 1;
+                }
+
+                int NextPageNo = ViewBag.PageNo + 1;
+                if (NextPageNo > ViewBag.NoOfPages)
+                {
+                    NextPageNo = ViewBag.NoOfPages;
+                }
+            }
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="/customer/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@PrevPageNo">Prev</a>
+                </li>
+                @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                {
+                    if ((i + 1) == ViewBag.PageNo)
+                    {
+                        <li class="page-item active">
+                            <a class="page-link" href="/customer/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@(i+1)">@(i+1)</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="/customer/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@(i+1)">@(i+1)</a>
+                        </li>
+                    }
+
+                }
+                <li class="page-item">
+                    <a class="page-link" href="/customer/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@NextPageNo">Next</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+</table>
+
+
+
+
+
+
+<input type="hidden" id="hiddenCustomerNo" />
+
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Delete Customer</h3>
+                @*<a href="#" class="close" data-dismiss="modal">&times;</a>*@
+
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure You want to delete Customer Information?</h4>
+
+                <div style="text-align:center;display:none" id="loaderDiv">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" onclick="cancel()" data-dismiss="modal">Cancel</a>
+                <a href="#" class="btn btn-success" onclick="Delete()">Confirm</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+    var ConfirmDelete = function (CustomerNo) {
+
+        $("#hiddenCustomerNo").val(CustomerNo);
+        $("#myModal").modal('show');
+
+    }
+
+    var Delete = function () {
+
+        $("#loaderDiv").show();
+
+        var CustomerNo = $("#hiddenCustomerNo").val();
+
+        $.ajax({
+
+            type: "POST",
+            url: "/Customer/Delete",
+            data: { id: CustomerNo },
+            success: function (result) {
+                $("#loaderDiv").hide();
+                $("#myModal").modal("hide");
+                $("#row_" + CustomerNo).remove();
+
+            }
+
+        })
+
+    }
+
+    var cancel = function () {
+        $("#myModal").modal("hide");
+    }
+
+</script>
+
+
+
+
+
